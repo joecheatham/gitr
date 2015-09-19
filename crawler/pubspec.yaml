@@ -1,0 +1,7 @@
+name: gitr
+version: 0.0.1
+description: >
+  gitHub stumbleUpon yo
+author: Joe Cheatham <cheathamjoe@gmail.com>
+dependencies:
+  html: any
