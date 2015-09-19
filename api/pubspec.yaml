@@ -1,0 +1,9 @@
+name: gitr
+version: 0.0.1
+description: >
+  gitHub stumbleUpon yo
+author: Joe Cheatham <cheathamjoe@gmail.com>
+dependencies:
+  rpc: any
+  logging: '>=0.11.1 <0.12.0'
+  logging_handlers: ">=0.8.0 <0.9.0"
