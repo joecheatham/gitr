@@ -37,7 +37,7 @@ scrape(String url) {
       print(e.querySelector('.lang').text + ': ' +  e.querySelector('.percent').text);
     });
     //lines
-    // ???
+    
     print('\n');
   });
 }
