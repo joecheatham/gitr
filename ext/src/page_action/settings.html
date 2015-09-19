@@ -9,6 +9,40 @@
 </body>
 <script type="text/javascript" src="src/inject/jquery-2.1.4.min.js"></script>
 <script>
-	// Put inline JavaScript here
+
+	var bestLangArr = [
+		"JavaScript",
+		"Java",
+		"Ruby",
+		"CSS",
+		"Python",
+		"PHP",
+		"C",
+		"C++",
+		"C#",
+		"Shell",
+		"Objective-C",
+		"Go",
+		"Perl",
+		"R",
+		"Swift",
+		"Lua",
+		"ActionScript",
+		"Dogescript",
+		"Matlab",
+		"Assembly",
+		"Dart",
+		"Rust",
+		"Julia",
+		"Haskell",
+		"Arduino"
+	];
+	var cbFill = '<input type="checkbox" id="">';
+
+	bestLangArr.each(function(index,el){
+		var cbFill = '<input type="checkbox" id="'+ bestLangArr[index] + '">';
+
+		$('div').append(cbFill);
+	});
 </script>
 </html>
