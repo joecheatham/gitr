@@ -13,12 +13,20 @@ class Page {
 
 
 main() {
-  final String url = 'https://github.com/joecheatham/duckduckgo';
+  final String github = "https://github.com/";
+  String url = 'https://github.com/search?q=stars%3A%3E1&type=Repositories';
   for (int i = 1; i <= 1; i++) {
-
+    getHtml(url).then((document) {
+      document.querySelectorAll('ul.repo-list').forEach((e) {
+        String title = e.querySelector('h3.repo-list-name > a').text.split('/')[0];
+        getHtml(github + title).then((user) {
+          user.querySelectorAll('h3.repo-list-name > a').forEach((a) {
+            scrape(github + title + '/' + a.text.trim());
+          });
+        });
+      });
+    });
   }
-  scrape(url);
-  
 }
 
 scrape(String url) {
@@ -37,7 +45,7 @@ scrape(String url) {
       print(e.querySelector('.lang').text + ': ' +  e.querySelector('.percent').text);
     });
     //lines
-    
+
     print('\n');
   });
 }
