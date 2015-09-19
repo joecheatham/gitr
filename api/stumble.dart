@@ -33,14 +33,33 @@ class Stumble {
   	await db.open();
   	var collection = db.collection('repositories');
 
-  	var list = await collection
-      .find(where
-          .eq('user', 'google')
-          .sortBy('stars', descending: true)
-          .fields(['url']))
-          .toList();
+
+    var list = await collection.find(where.oneFrom('langs.lang',['Shell','Rust']).fields(['url']).limit(100)).toList();
+
+  	// var list = await collection
+   //    .find(where
+   //        .eq('user', 'facebook')
+   //        .sortBy('stars', descending: true)
+   //        .fields(['url']))
+   //        .toList();
 
   	await db.close();
     return list;
   }
+
+  // List<String> rank(String user) async {
+  //   Db db = new Db("mongodb://api:password@ds051523.mongolab.com:51523/gitr");
+  //   await db.open();
+  //   var collection = db.collection('repositories');
+  //   var list = await collection.find(where.limit(1000));
+  //   (match * match.percent) * stars/
+  //   100
+
+  //   var 
+  // }
+
+  // class Item {
+  //   int score;
+  //   String url;
+  // }
 }
