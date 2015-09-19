@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<link rel="stylesheet" type="text/css" href="../../css/css.css">
 </head>
 <body>
 <div>
 </div>
 </body>
-<script type="text/javascript" src="src/inject/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="../../js/jquery/jquery.min.js"></script>
+
+<script type="text/javascript" src="jquery-ui.js"></script>
+<script type="text/javascript" src="allLangs.js"></script>
 <script>
 
 	var bestLangArr = [
@@ -39,10 +42,53 @@
 	];
 	var cbFill = '<input type="checkbox" id="">';
 
-	bestLangArr.each(function(index,el){
-		var cbFill = '<input type="checkbox" id="'+ bestLangArr[index] + '">';
+	bestLangArr.forEach(function(el,index){
+		var cbFill = '<label>' + el+ '</label> <input type="checkbox" id="'+ bestLangArr[index] + '">';
 
 		$('div').append(cbFill);
 	});
+
+
+
+
+
+
+	$(function() {
+		var allFill = [];
+
+		for(var k in allLangs) {
+
+			allFill.push(k);
+
+		}
+
+
+		$("#langs").autocomplete({
+			source: allFill
+		});
+	});
+
+
+
 </script>
+
+
+<div class="ui-widget">
+	<label for="langs">Tags: </label>
+	<input id="langs">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
