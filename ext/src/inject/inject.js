@@ -8,6 +8,12 @@ chrome.extension.sendMessage({}, function(response) {
 		console.log("Hello. This message was sent from scripts/inject.js");
 		// ----------------------------------------------------------
 
+	$('#pref_btn').click(function(event) {
+		$(this).append('Some text');
+	});
+	$('#git_btn').click(function(event) {
+		console.log(event);
+	});
 	}
 	}, 10);
 });
