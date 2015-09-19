@@ -73,6 +73,26 @@ func scrape(url string, ch chan string, chFinished chan bool) {
     }
 }
 
+func getUser(url string) {
+
+}
+
+func getRepos(url string) {
+
+}
+
+func crawl() {
+	for page := 1; page <= 100; page++ {
+		for link := 1; link <= 10; link++ {
+			// user := getUser(link)
+			// repos := getRepos(link)
+			// for repo := range repos {
+			// 	scrape(repo, repos, user)
+			// }
+		}
+	}
+}
+
 func main() {
     foundUrls := make(map[string]bool)
     seedUrls := os.Args[1:]
