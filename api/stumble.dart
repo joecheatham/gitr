@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:logging/logging.dart';
 import 'package:logging_handlers/server_logging_handlers.dart';
 import 'package:rpc/rpc.dart';
+import 'package:mongo_dart/mongo_dart.dart';
 
 const String _API_PREFIX = '/api';
 final ApiServer _apiServer =
@@ -26,8 +27,20 @@ main() async {
 @ApiClass(name: 'stumble', version: 'v1')
 class Stumble {
 
-  @ApiMethod(method: 'GET', path: 'upon')
-  List<String> upon() {
-    return ["Hello API!"];
+  @ApiMethod(method: 'GET', path: '{user}')
+  List<String> upon(String user) async {
+  	Db db = new Db("mongodb://api:password@ds051523.mongolab.com:51523/gitr");
+  	await db.open();
+  	var collection = db.collection('repositories');
+
+  	var list = await collection
+      .find(where
+          .eq('user', 'google')
+          .sortBy('stars', descending: true)
+          .fields(['url']))
+          .toList();
+
+  	await db.close();
+    return list;
   }
 }

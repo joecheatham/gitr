@@ -13,6 +13,10 @@ packages:
     description: args
     source: hosted
     version: "0.13.2"
+  bson:
+    description: bson
+    source: hosted
+    version: "0.2.0"
   charcode:
     description: charcode
     source: hosted
@@ -33,6 +37,10 @@ packages:
     description: discoveryapis_generator
     source: hosted
     version: "0.7.2"
+  fixnum:
+    description: fixnum
+    source: hosted
+    version: "0.10.2"
   gcloud:
     description: gcloud
     source: hosted
@@ -77,6 +85,18 @@ packages:
     description: matcher
     source: hosted
     version: "0.12.0+1"
+  mongo_dart:
+    description: mongo_dart
+    source: hosted
+    version: "0.2.4"
+  mongo_dart_query:
+    description: mongo_dart_query
+    source: hosted
+    version: "0.2.1"
+  more:
+    description: more
+    source: hosted
+    version: "1.4.0"
   package_config:
     description: package_config
     source: hosted
