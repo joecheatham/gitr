@@ -24,7 +24,7 @@ func getHref(t html.Token) (ok bool, href string) {
 }
 
 // Extract all http** links from a given webpage
-func crawl(url string, ch chan string, chFinished chan bool) {
+func scrape(url string, ch chan string, chFinished chan bool) {
     resp, err := http.Get(url)
 
     defer func() {
@@ -83,7 +83,7 @@ func main() {
 
     // Kick off the crawl process (concurrently)
     for _, url := range seedUrls {
-        go crawl(url, chUrls, chFinished)
+        go scrape(url, chUrls, chFinished)
     }
 
     // Subscribe to both channels
