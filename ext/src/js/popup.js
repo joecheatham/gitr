@@ -11,6 +11,18 @@ $('#git_btn').click(function(){
 				url: url
 			});
 		});
-
 	});
 });
+
+$('#pref_btn').click(function() {
+	console.log('prefs');
+	// chrome.tabs.getSelected(null, function(tabs) {
+	// 	$.ajax('http://localhost:8080/api/stumble/v1/google').success(function(data) {
+	// 		var url = data[getRandomIndex(data.length)]['url'];
+	// 		chrome.tabs.update(tabs.id, {
+	// 			url: 'page_action/settings.html'
+	// 		});
+	// 	});
+
+	// });
+})

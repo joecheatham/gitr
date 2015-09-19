@@ -1,21 +1,45 @@
 <!doctype html>
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-blue.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css">
+	/*body {
+		background-color: #03A9F4;
+	}*/
 	#mainPopup {
-		padding: 10px;
-		height: 200px;
+		height: 150px;
 		width: 400px;
-		font-family: Helvetica, Ubuntu, Arial, sans-serif;
+		
 	}
-	h1 {
-		font-size: 2em;
+	.mdl-card__title {
+		background-color: #3F51B5;
+		color: white;
 	}
+	#grey_bg {
+		background-color: #EFEFEF;
+		color: #757575;
+		height: 150px;
+	}
+	.mdl-card__actions {
+		vertical-align: middle;
+	}
+	
+
 </style>
 
-<div id="mainPopup">
-<h1 id='welcome'>Welcome to Gitr!</h1>
-<p>This is where the user will be able to stumble or change preferences</p>
-<button id='pref_btn'>Preferences</button>
-<button id='git_btn'>Git!</button>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp--primary" id="mainPopup">
+		<div class="mdl-card__title">
+			<h2 class="mdl-card__title-text" id='welcome'>Welcome to Gitr!</h2>
+		</div>
+	<div id="grey_bg">
+		<div class="mdl-card__supporting-text">
+		    Gitr is a stumbling browser for repositories! Hit the 'Git!' button to find some code, or 'Preferences' to refine your results!
+	  	</div>
+	  	<div class="mdl-card__actions mdl-card--border">
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id='pref_btn'>Preferences</button>
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id='git_btn'>Git!</button>
+		</div>
+	</div>
 </div>
-<script type="text/javascript" src="/src/inject/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="/src/js/popup.js"></script>
+<script src="/src/inject/jquery-2.1.4.min.js"></script>
+<script src="/src/js/popup.js"></script>
+<!-- <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script> -->
