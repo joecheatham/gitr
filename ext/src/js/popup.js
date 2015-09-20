@@ -1,9 +1,11 @@
+$('.spinner').hide();
+
 function getRandomIndex(max) {
 	return Math.floor(Math.random() * (max));
 }
 
 $('#git_btn').click(function() {
-
+	$('.spinner').show();
 	chrome.storage.sync.get('languages', function(data) {
 		var langs = "";
 
@@ -24,21 +26,24 @@ $('#git_btn').click(function() {
 					chrome.tabs.update(tabs.id, {
 						url: url
 					});
+					$('.spinner').hide();
 				});
 			});
 
 
 	});
 
-	
+
 });
 
 $('#pref_icon').click(function() {
-	$('.spinner').attr('display','inline');
+	$('.spinner').show();
 	chrome.tabs.getSelected(null, function(tabs) {
 		chrome.tabs.update(tabs.id, {
 			url: 'src/page_action/settings.html'
 		});
+			$('.spinner').hide();
 	});
+
 });
 
