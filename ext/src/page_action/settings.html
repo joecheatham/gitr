@@ -1,75 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../../css/css.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../../css/css.css"> -->
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="tag-it-master/css/jquery.tagit.css">
 <style>
 	#container {
 		height: 600px;
 		width: 400px;
-	}
+	} 
 </style>
+
 </head>
 <body>
 <div id="container">
 
-	<div class="ui-widget">
+	<!-- <div class="ui-widget">
 		<label for="langs">Tags: </label>
 		<input id="langs">
-	</div>
+	</div> -->
+	<form>
+        <p>
+            Normally this input field will be hidden &mdash; we leave it visible here so you can see how it is manipulated by the widget:
+            <input name="tags" id="mySingleField" value="Apple, Orange" disabled="true"> <!-- only disabled for demonstration purposes -->
+        </p>
+        <ul id="singleFieldTags"></ul>
+        <input type="submit" value="Submit">
+    </form>
 </div>
 
 </body>
-<script type="text/javascript" src="../../js/jquery/jquery.min.js"></script>
+<script src="jquery-2.1.4.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="allLangs.js"></script>
+<script src="settings.js"></script>
 
-<script type="text/javascript" src="jquery-ui.js"></script>
-<script type="text/javascript" src="allLangs.js"></script>
-<script>
-
-	var bestLangArr = [
-		"JavaScript",
-		"Java",
-		"Ruby",
-		"CSS",
-		"Python",
-		"PHP",
-		"C",
-		"C++",
-		"C#",
-		"Shell",
-		"Objective-C",
-		"Go",
-		"Perl",
-		"R",
-		"Swift",
-		"Lua",
-		"ActionScript",
-		"Dogescript",
-		"Matlab",
-		"Assembly",
-		"Dart",
-		"Rust",
-		"Julia",
-		"Haskell",
-		"Arduino"
-	];
-	var cbFill = '<input type="checkbox" id="">';
-
-	bestLangArr.forEach(function(el,index){
-		var cbFill = '<label>' + el+ '</label> <input type="checkbox" id="'+ bestLangArr[index] + '"><br>';
-
-		$('#container').append(cbFill);
-	});
-
-	$(function() {
-		var allFill = [];
-		for(var k in allLangs) {
-			allFill.push(k);
-		}
-		$("#langs").autocomplete({
-			source: allFill
-		});
-	});
-
-</script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="tag-it-master/js/tag-it.js" type="text/javascript" charset="utf-8"></script>
 
 </html>
