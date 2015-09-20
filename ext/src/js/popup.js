@@ -16,6 +16,7 @@ $('#git_btn').click(function(){
 
 $('#pref_icon').click(function() {
 	console.log('prefs');
+	$('.spinner').attr('display','inline');
 	chrome.tabs.getSelected(null, function(tabs) {
 		chrome.tabs.update(tabs.id, {
 			url: 'src/page_action/settings.html'
