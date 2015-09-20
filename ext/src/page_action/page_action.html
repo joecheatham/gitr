@@ -1,6 +1,7 @@
 <!doctype html>
 <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-blue.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Roboto">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <style type="text/css">
@@ -32,6 +33,11 @@
 		vertical-align: middle;
 	}
 	*/
+
+	#git_btn {
+		font-family: Roboto;
+		background-color: #2998F1;
+	}
 	.rt_align {
 		float: right;
 	}
@@ -39,16 +45,22 @@
 		font-size: xx-large;
 	}
 	#git_bar {
+		
 		vertical-align: middle;
 		padding: 5px;
 		color: white;
 	}
 
+	.icon {
+		height: 26px;
+		width: 26px;
+		margin-right: 5px;
+		top: 9px;
+	}
 
-
-
-
-
+	.rightCon {
+		margin-right: 5px;
+	}
 
 	.spinner {
 		/*margin: 100px auto;*/
@@ -92,6 +104,46 @@
 		animation-delay: -1.0s;
 	}
 
+	.git-btn {
+	margin-top: 0px;
+	margin-right: 2px;
+	padding: 8px 10px;
+	font-size: 15px;
+	line-height: 100%;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+	color: #fff;
+	display:inline-block;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	font-weight: bold;
+	transition: background 0.1s ease-in-out;
+	-webkit-transition: background 0.1s ease-in-out;
+	-moz-transition: background 0.1s ease-in-out;
+	-ms-transition: background 0.1s ease-in-out;
+	-o-transition: background 0.1s ease-in-out;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	color: #fff;
+	border: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-color: #fff;
+	background-color: #3fb8e8;
+}
+.git-btn:active {
+        margin-bottom: -1px;
+}
+.git-btn, .git-btn:hover, .git-btn:active {
+	outline: 0 none;
+	text-decoration: none;
+	color: #fff;
+}
+.git-btn:hover {
+	background-color: #1baae3;
+}
+
+
 	@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
 	@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
 
@@ -118,7 +170,7 @@
 
 
 <div id='git_bar'>
-	<span><b>gitr</b></span>
+	<span><b>gitr.</b></span>
 
 	<div class="spinner">
 		<div class="dot1"></div>
@@ -126,9 +178,9 @@
 	</div>
 	<!-- <button class="btn btn-primary rt_align">Preferences</button>
 	<button class="btn btn-primary rt_align">Git!</button> -->
-	<button id="git_btn" class="btn btn-primary rt_align">Git!</button>
-	<a id="pref_icon" href="#"><img class="rt_align" src="/icons/prefIcon.png"></a>
-	<a id="pay_icon" href="#"><img class="rt_align" src="/icons/payIcon.png"></a>
+	<button id="git_btn" class="git-btn rt_align">Git!</button>
+	<a id="pref_icon" href="#"><img class="rt_align icon rightCon" src="/icons/prefIcon.png"></a>
+	<a id="pay_icon" href="#"><img class="rt_align icon" src="/icons/payIcon.png"></a>
 	
 </div>
 <!-- <div class="demo-card-wide mdl-card mdl-shadow--2dp--primary" id="mainPopup">
