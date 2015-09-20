@@ -1,4 +1,4 @@
-var allLangs = {
+allLangs = {
     "ABAP": {
         "type": "programming",
         "color": "#E8274B",

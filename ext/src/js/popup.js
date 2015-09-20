@@ -14,7 +14,7 @@ $('#git_btn').click(function(){
 	});
 });
 
-$('#pref_btn').click(function() {
+$('#pref_icon').click(function() {
 	console.log('prefs');
 	chrome.tabs.getSelected(null, function(tabs) {
 		chrome.tabs.update(tabs.id, {
