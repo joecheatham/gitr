@@ -9,6 +9,7 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+  "options_page": "src/page_action/settings.html",
   "default_locale": "en",
   "background": {
     "scripts": [

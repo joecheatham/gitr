@@ -5,7 +5,7 @@ function getRandomIndex(max) {
 $('#git_btn').click(function(){
 	console.log('git');
 	chrome.tabs.getSelected(null, function(tabs) {
-		$.ajax('http://localhost:8080/api/stumble/v1/google?languages=Ruby').success(function(data) {
+		$.ajax('http://localhost:8080/api/stumble/v1/google?languages=Matlab').success(function(data) {
 			var url = data[getRandomIndex(data.length)]['url'];
 			chrome.tabs.update(tabs.id, {
 				url: url
@@ -16,13 +16,9 @@ $('#git_btn').click(function(){
 
 $('#pref_btn').click(function() {
 	console.log('prefs');
-	// chrome.tabs.getSelected(null, function(tabs) {
-	// 	$.ajax('http://localhost:8080/api/stumble/v1/google').success(function(data) {
-	// 		var url = data[getRandomIndex(data.length)]['url'];
-	// 		chrome.tabs.update(tabs.id, {
-	// 			url: 'page_action/settings.html'
-	// 		});
-	// 	});
-
-	// });
-})
+	chrome.tabs.getSelected(null, function(tabs) {
+		chrome.tabs.update(tabs.id, {
+			url: 'src/page_action/settings.html'
+		});
+	});
+});
