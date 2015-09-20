@@ -25,4 +25,4 @@ $('#pref_btn').click(function() {
 	// 	});
 
 	// });
-})
+});
