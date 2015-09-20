@@ -4,20 +4,23 @@ import 'dart:async';
 import 'package:html/parser.dart' show parse;
 import 'package:html/dom.dart';
 import 'package:mongo_dart/mongo_dart.dart';
+import 'package:args/args.dart';
 
-main() {
-    String url = 'https://github.com/trending';
+main(List<String> arguments) {
+  final parser = new ArgParser();
+  parser.addFlag('language', abbr: 'l', negatable: false);
+    var argResults = parser.parse(arguments);
+    String url = 'https://github.com/trending?l=' + argResults.rest[0];
     crawl(url);
 }
 
 crawl(String url) {
-  final String github = "https://github.com/trending?since=weekly";
+  final String github = "https://github.com/";
   int count = 0;
   getHtml(url).then((document) {
-    document.querySelectorAll('ul.repo-list > li').forEach((e) {
+    document.querySelectorAll('ol.repo-list > li').forEach((e) {
       String title =
-      e.querySelector('h3.repo-list-name > a > span.prefix').text;
-
+      e.querySelector('span.prefix').text;
       getHtml(github + title).then((user) {
         user.querySelectorAll('h3.repo-list-name > a').forEach((a) {
           scrape(github + title + '/' + a.text.trim());
@@ -36,9 +39,9 @@ scrape(String url) {
     if (success) {
       var collection = db.collection('repositories');
       getHtml(url).then((document) {
-        var langs = new Map();
+        var langs = [];
         document.querySelectorAll('.repository-lang-stats-numbers > li').forEach((e) {
-          langs[e.querySelector('.lang').text] = double.parse(e.querySelector('.percent').text.split('%')[0]);
+          langs.add({"lang": e.querySelector('.lang').text, "percent": double.parse(e.querySelector('.percent').text.split('%')[0])});
         });
         String desc = "";
         if (document.querySelector('#readme > .markdown-body > p') != null)

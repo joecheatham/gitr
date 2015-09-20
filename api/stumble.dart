@@ -26,51 +26,52 @@ main() async {
 
 @ApiClass(name: 'stumble', version: 'v1')
 class Stumble {
-
   @ApiMethod(method: 'GET', path: '{user}')
   List<String> upon(String user, {String languages}) async {
-  	Db db = new Db("mongodb://api:password@ds051523.mongolab.com:51523/gitr");
-  	await db.open();
-  	var collection = db.collection('repositories');
+    Db db = new Db("mongodb://api:password@ds051523.mongolab.com:51523/gitr");
+    await db.open();
+    var collection = db.collection('repositories');
 
     var list = await collection
-      .find(where
-        .oneFrom('langs.lang',languages.split(',')))
-      .toList();
+        .find(where.oneFrom('langs.lang', languages.split(',')))
+        .toList();
 
-  	await db.close();
-
+    await db.close();
     list = await rank(list, languages.split(','));
     int end = list.length > 1000 ? 1000 : list.length;
     return list.getRange(0, end);
   }
 
   List<String> rank(Map list, List<String> languages) async {
-
-    for (int i = 0; i < list.length; i++) {
-      var docLangs = [];
-      for (int j = 0; j < list[i]['langs'].length; j++) {
-        docLangs.add(list[i]['langs'][j]);
-      }
-      var commonLangs = [];
-      for (int j = 0; j < docLangs.length; j++) {
-        if (languages.contains(docLangs[j]['lang'])) {
-          commonLangs.add(docLangs[j]);
+    try {
+      for (int i = 0; i < list.length; i++) {
+        var docLangs = [];
+        for (int j = 0; j < list[i]['langs'].length; j++) {
+          docLangs.add(list[i]['langs'][j]);
         }
-      }
-      double weight = 0;
-      for (int j = 0; j < commonLangs.length; j++) {
-        weight += commonLangs[j]['percent'];
-      }
 
-      weight *= list[i]['stars'];
-      weight /= 100;
+        var commonLangs = [];
+        for (int j = 0; j < docLangs.length; j++) {
+          if (languages.contains(docLangs[j]['lang'])) {
+            commonLangs.add(docLangs[j]);
+          }
+        }
+        double weight = 1;
+        for (int j = 0; j < commonLangs.length; j++) {
+          weight += commonLangs[j]['percent'];
+        }
 
-      list[i].addAll({'weight': weight});
+        if (list[i]['stars'] != null)
+          weight *= list[i]['stars'];
+        weight /= 100;
+        list[i].addAll({'weight': weight});
+      }
+      list.sort((m1, m2) {
+        return (-1) * m1['weight'].compareTo(m2['weight']);
+      });
+      return list;
+    } catch (e, stacktrace) {
+      print(stacktrace);
     }
-    list.sort((m1, m2) {
-      return (-1) * m1['weight'].compareTo(m2['weight']);
-    });
-    return list;
   }
 }

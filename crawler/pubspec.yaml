@@ -6,3 +6,4 @@ author: Joe Cheatham <cheathamjoe@gmail.com>
 dependencies:
   html: any
   mongo_dart: any
+  args: any
