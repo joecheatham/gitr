@@ -4,38 +4,77 @@
 	<!-- <link rel="stylesheet" type="text/css" href="../../css/css.css"> -->
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="tag-it-master/css/jquery.tagit.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <style>
-	#container {
-		height: 600px;
-		width: 400px;
-	}
 
+body {
+	background-color: #3F51B5;
+}
 
-
-
-
-
+        h4 {
+            color: #fff;
+            text-align: center;
+        }
+        label {
+        	color: #fff;
+        }
+        	.git-btn {
+	margin-top: 0px;
+	margin-right: 2px;
+	padding: 8px 10px;
+	font-size: 15px;
+	line-height: 100%;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+	color: #fff;
+	display:inline-block;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	font-weight: bold;
+	transition: background 0.1s ease-in-out;
+	-webkit-transition: background 0.1s ease-in-out;
+	-moz-transition: background 0.1s ease-in-out;
+	-ms-transition: background 0.1s ease-in-out;
+	-o-transition: background 0.1s ease-in-out;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	color: #fff;
+	border: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-color: #fff;
+	background-color: #3fb8e8;
+}
+.git-btn:active {
+        margin-bottom: -1px;
+}
+.git-btn, .git-btn:hover, .git-btn:active {
+	outline: 0 none;
+	text-decoration: none;
+	color: #fff;
+}
+.git-btn:hover {
+	background-color: #1baae3;
+}
 
 </style>
 
 </head>
 <body>
 
+<h4>Settings</h4>
 
-
-<div id="container">
+<div class="container">
 
 	<!-- <div class="ui-widget">
 		<label for="langs">Tags: </label>
 		<input id="langs">
 	</div> -->
 	<form>
-        <p>
-            
             <input name="tags" id="mySingleField" value="Apple, Orange" disabled="true" style="display:none;"> <!-- only disabled for demonstration purposes -->
-        </p>
+            <label>What languages are you interested in?</label>
         <ul id="singleFieldTags"></ul>
-        <input type="submit" value="Submit">
+        <button id="close" class="git-btn">Close</button>
     </form>
 </div>
 

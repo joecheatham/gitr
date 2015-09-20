@@ -23,9 +23,26 @@ onReady(function () {
 
 $(document).ready(function() {
 
+	function loadPrefs() {
+		chrome.storage.sync.get('languages', function(data) {
+		var langs = "";
+
+		if(chrome.runtime.lastError)
+			langs = "C,C++,Java,Javascript,Ruby";
+		else  {
+			if (typeof data['languages'] === 'string' || datadata['languages'] instanceof String)
+				langs = data['languages'];
+			else
+				langs = "C,C++,Java,Javascript,Ruby";
+		}
+
+		//add to tagit here
+
+		});
+	}
+
 	function savePrefs() {
 		chrome.storage.sync.set({'languages': $('#mySingleField').val()}, function() {
-          message('Settings saved');
         });
 	}
 
@@ -49,5 +66,11 @@ $(document).ready(function() {
     	afterTagRemoved: function() {
     		savePrefs();
     	}
+    });
+
+    $('#close').click(function() {
+    	chrome.windows.getCurrent(function(data) {
+    		chrome.windows.remove(data.id);
+    	});
     });
 });

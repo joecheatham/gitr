@@ -38,16 +38,12 @@ $('#git_btn').click(function() {
 
 $('#pref_icon').click(function() {
 	$('.spinner').show();
-	chrome.tabs.getSelected(null, function(tabs) {
-		chrome.tabs.update(tabs.id, {
-			url: 'src/page_action/settings.html'
-		});
-			$('.spinner').hide();
-	});
-
+	chrome.windows.create({ url: 'src/page_action/settings.html', width: 420, height: 300, type: "popup" });
 });
 
 $('#pay_icon').click(function() {
+	$('.spinner').show();
 	chrome.windows.create({ url: 'src/page_action/donate.html', width: 420, height: 300, type: "popup" });
+	$('.spinner').hide();
 });
 
