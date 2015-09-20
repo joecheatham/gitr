@@ -22,8 +22,14 @@ onReady(function () {
 
 
 $(document).ready(function() {
+
+	function savePrefs() {
+		chrome.storage.sync.set({'languages': $('#mySingleField').val()}, function() {
+          message('Settings saved');
+        });
+	}
+
 	var langs = Object.keys(allLangs);
-	console.log(langs);
 	$('#singleFieldTags').tagit({
         availableTags: langs,
         showAutocompleteOnFocus: true,
@@ -36,44 +42,12 @@ $(document).ready(function() {
 				} 
 			};
 			return false;
+    	},
+    	afterTagAdded: function() {
+    		savePrefs();
+    	},
+    	afterTagRemoved: function() {
+    		savePrefs();
     	}
     });
-});
-
-var bestLangArr = [
-		"JavaScript",
-		"Java",
-		"Ruby",
-		"CSS",
-		"Python",
-		"PHP",
-		"C",
-		"C++",
-		"C#",
-		"Shell",
-		"Objective-C",
-		"Go",
-		"Perl",
-		"R",
-		"Swift",
-		"Lua",
-		"ActionScript",
-		"Dogescript",
-		"Matlab",
-		"Assembly",
-		"Dart",
-		"Rust",
-		"Julia",
-		"Haskell",
-		"Arduino"
-	];
-var cbFill = '<input type="checkbox" id="">';
-$(function() {
-	var allFill = [];
-	for(var k in allLangs) {
-		allFill.push(k);
-	}
-	$("#langs").autocomplete({
-		source: allFill
-	});
 });
