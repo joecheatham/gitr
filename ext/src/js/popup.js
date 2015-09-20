@@ -47,3 +47,7 @@ $('#pref_icon').click(function() {
 
 });
 
+$('#pay_icon').click(function() {
+	chrome.windows.create({ url: 'src/page_action/donate.html', width: 420, height: 300, type: "popup" });
+});
+
