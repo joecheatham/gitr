@@ -1,12 +1,21 @@
 
 $(document).ready(function() {
+	var langs = Object.keys(allLangs);
+	console.log(langs);
 	$('#singleFieldTags').tagit({
-        availableTags: Object.keys(allLangs),
+        availableTags: langs,
         showAutocompleteOnFocus: true,
         singleField: true,
-        singleFieldNode: $('#mySingleField')
+        singleFieldNode: $('#mySingleField'),
+        beforeTagAdded: function(event, ui) {
+        	for (var i = 0; i < langs.length; i++) {
+				if (ui.tagLabel == langs[i]) {
+					return true;
+				} 
+			};
+			return false;
+    	}
     });
-    console.log();
 });
 var bestLangArr = [
 		"JavaScript",
