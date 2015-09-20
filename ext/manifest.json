@@ -17,7 +17,7 @@
     ],
     "persistent": true
   },
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage"],
   "page_action": {
     "default_icon": "icons/icon19.png",
     "default_title": "Find some code",

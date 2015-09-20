@@ -41,7 +41,8 @@ class Stumble {
   	await db.close();
 
     list = await rank(list, languages.split(','));
-    return list;
+    int end = list.length > 1000 ? 1000 : list.length;
+    return list.getRange(0, end);
   }
 
   List<String> rank(Map list, List<String> languages) async {
