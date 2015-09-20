@@ -4,6 +4,7 @@
   <title>Donations</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <body>
     <style type="text/css">
@@ -100,10 +101,10 @@
         <div class="donation-wrapper">
          <form id="simplify-payment-form" action="" method="POST">
             <h4>Buy us a coffee!</h4>
-            <input type="text" class="form-control" placeholder="Enter Name as appears on card" name="amount" required="">
-            <input type="text" class="form-control" placeholder="Card Number" required="">
-            <input type="text" class="form-control" placeholder="CVC" name="amount" required="">
-            <input type="text" class="form-control" placeholder="Enter Amt. in USD" name="amount" required="">
+            <input id="cc-name" type="text" class="form-control" placeholder="Enter Name as appears on card" name="amount" required="">
+            <input id="cc-num" type="text" class="form-control" placeholder="Card Number" required="">
+            <input id="cc-cvc" type="text" class="form-control" placeholder="CVC" name="amount" required="">
+            <input id="cc-cash" type="text" class="form-control" placeholder="Enter Amt. in USD" name="amount" required="">
 
                 <label>Expiry Date: </label>
                 <select id="cc-exp-month">
@@ -139,7 +140,7 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.simplify.com/commerce/v1/simplify.js"></script>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="../../../js/bootstrap-select.js"></script>
 <script src="../js/donate.js"></script>
 </body>

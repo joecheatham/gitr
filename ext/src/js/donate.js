@@ -30,19 +30,37 @@ $('.selectpicker').selectpicker();
     }
     $(document).ready(function() {
         $("#simplify-payment-form").on("submit", function() {
+            toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "2000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+};
+            toastr["success"]("Your donation was successful.", "Thanks!");
+            $('input:text').val('');
             // Disable the submit button
-            $("#process-payment-btn").attr("disabled", "disabled");
+            //$("#process-payment-btn").attr("disabled", "disabled");
             // Generate a card token & handle the response
-            SimplifyCommerce.generateToken({
-                key: "YOUR_PUBLIC_KEY",
-                card: {
-                    number: $("#cc-number").val(),
-                    cvc: $("#cc-cvc").val(),
-                    expMonth: $("#cc-exp-month").val(),
-                    expYear: $("#cc-exp-year").val()
-                }
-            }, simplifyResponseHandler);
-            alert('submitted!');
+            // SimplifyCommerce.generateToken({
+            //     key: "YOUR_PUBLIC_KEY",
+            //     card: {
+            //         number: $("#cc-number").val(),
+            //         cvc: $("#cc-cvc").val(),
+            //         expMonth: $("#cc-exp-month").val(),
+            //         expYear: $("#cc-exp-year").val()
+            //     }
+            // }, simplifyResponseHandler);
             // Prevent the form from submitting
             return false;
         });

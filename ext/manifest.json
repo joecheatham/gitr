@@ -35,5 +35,5 @@
       ]
     }
   ],
-  "content_security_policy": "script-src 'self' https://www.simplify.com https://ajax.googleapis.com 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://www.simplify.com https://cdnjs.cloudflare.com https://ajax.googleapis.com 'unsafe-eval'; object-src 'self'"
 }
