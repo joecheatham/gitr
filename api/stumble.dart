@@ -35,35 +35,41 @@ class Stumble {
 
     var list = await collection
       .find(where
-        .oneFrom('langs.lang',languages.split(','))
-        .fields(['url'])
-        .limit(100))
+        .oneFrom('langs.lang',languages.split(',')))
       .toList();
 
-  	// var list = await collection
-   //    .find(where
-   //        .eq('user', 'facebook')
-   //        .sortBy('stars', descending: true)
-   //        .fields(['url']))
-   //        .toList();
-
   	await db.close();
+
+    list = await rank(list, languages.split(','));
     return list;
   }
 
-  // List<String> rank(String user) async {
-  //   Db db = new Db("mongodb://api:password@ds051523.mongolab.com:51523/gitr");
-  //   await db.open();
-  //   var collection = db.collection('repositories');
-  //   var list = await collection.find(where.limit(1000));
-  //   (match * match.percent) * stars/
-  //   100
+  List<String> rank(Map list, List<String> languages) async {
 
-  //   var 
-  // }
+    for (int i = 0; i < list.length; i++) {
+      var docLangs = [];
+      for (int j = 0; j < list[i]['langs'].length; j++) {
+        docLangs.add(list[i]['langs'][j]);
+      }
+      var commonLangs = [];
+      for (int j = 0; j < docLangs.length; j++) {
+        if (languages.contains(docLangs[j]['lang'])) {
+          commonLangs.add(docLangs[j]);
+        }
+      }
+      double weight = 0;
+      for (int j = 0; j < commonLangs.length; j++) {
+        weight += commonLangs[j]['percent'];
+      }
 
-  // class Item {
-  //   int score;
-  //   String url;
-  // }
+      weight *= list[i]['stars'];
+      weight /= 100;
+
+      list[i].addAll({'weight': weight});
+    }
+    list.sort((m1, m2) {
+      return (-1) * m1['weight'].compareTo(m2['weight']);
+    });
+    return list;
+  }
 }
