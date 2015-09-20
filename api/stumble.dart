@@ -28,13 +28,17 @@ main() async {
 class Stumble {
 
   @ApiMethod(method: 'GET', path: '{user}')
-  List<String> upon(String user) async {
+  List<String> upon(String user, {String languages}) async {
   	Db db = new Db("mongodb://api:password@ds051523.mongolab.com:51523/gitr");
   	await db.open();
   	var collection = db.collection('repositories');
 
-
-    var list = await collection.find(where.oneFrom('langs.lang',['Shell','Rust']).fields(['url']).limit(100)).toList();
+    var list = await collection
+      .find(where
+        .oneFrom('langs.lang',languages.split(','))
+        .fields(['url'])
+        .limit(100))
+      .toList();
 
   	// var list = await collection
    //    .find(where
