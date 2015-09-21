@@ -30,7 +30,7 @@ $(document).ready(function() {
 		if(chrome.runtime.lastError)
 			langs = "C,C++,Java,Javascript,Ruby";
 		else  {
-			if (typeof data['languages'] === 'string' || datadata['languages'] instanceof String)
+			if (typeof data['languages'] === 'string' || data['languages'] instanceof String)
 				langs = data['languages'];
 			else
 				langs = "C,C++,Java,Javascript,Ruby";
