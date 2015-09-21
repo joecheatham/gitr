@@ -1,2 +1,5 @@
 crawler/packages/
 api/packages/
+.idea
+.pub
+.packages
