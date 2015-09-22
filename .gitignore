@@ -3,3 +3,4 @@ api/packages/
 .idea
 .pub
 .packages
+.DS_Store
