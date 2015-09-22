@@ -23,9 +23,48 @@
 
 <p>gitr. is a chrome extension that helps you discover unique and interesting projects hosted on GitHub.</p>
 
-<h3>How do I use it?</h3>
+<h3>How do I install it?</h3>
+<p><a href="https://chrome.google.com/webstore/detail/gitr/oniaohmkomninflndoikicaofadiemcl">Download the extension</a> from the Chrome Web Store. Or, if you're really adventurous, run it on your local machine!</p>
+<p>You'll first need to download the <code>dart</code> language sdk. It can be found <a href="https://www.dartlang.org/downloads/">here</a>.</p>
 
-<p>Download the extension from the <a href="https://chrome.google.com/webstore">Chrome Web Store</a>. Or, if you're really adventurous, run it on your local machine!</p>
+<p>Next, open up the file located in <code>ext/src/js/popup/</code> named <code>popup.js</code>.</p>
+
+<p>Change the following block:</p>
+
+<pre><code>chrome.tabs.getSelected(null, function(tabs) {
+    $.ajax('http://localhost:8080/api/stumble/v1/github?languages=' + langs).success(function(data) {
+      var url = data[getRandomIndex(data.length)]['url'];
+        chrome.tabs.update(tabs.id, {
+            url: url
+        });
+        $('.spinner').hide();
+    });
+});
+</code></pre>
+
+<p>to this:</p>
+
+<pre><code>chrome.tabs.getSelected(null, function(tabs) {
+    $.ajax('http://localhost:8080/api/stumble/v1/github?languages=' + langs).success(function(data) {
+      var url = data[getRandomIndex(data.length)]['url'];
+        chrome.tabs.update(tabs.id, {
+            url: url
+        });
+        $('.spinner').hide();
+    });
+});
+</code></pre>
+
+<p>Now navigate to the directory <code>api</code> in your terminal.</p>
+
+<p>Execute the command <code>pub get</code> to gather all of the dependencies for the project.
+Now execute the command <code>dart stumble.dart</code> to start the webserver on port <code>8080</code>.</p>
+
+<p>Now you can install the extension through the Chrome extensions page. You do this by enabling developer mode within the <a href="chrome://extensions">Chrome extensions</a> page, loading an unpacked extension, and selecting the <code>ext/</code> directory.</p>
+
+
+<h3>How do I use it?</h3>
+<p>It's easy! Just navigate to any page on <a href="https://github.com">GitHub</a> (even this one) and look up in your address bar. You should see a purple circle. Click that, and then the settings cog. After you set your language preferences, close the settings popup, and click <code>Git!</code>! It will do some behind the scenes magic and take you to a random repository matching your interests! Pretty neat!</p>
 
 <h3>This extension sucks, make it better!</h3>
 
